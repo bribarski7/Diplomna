@@ -50,3 +50,7 @@
 .navbar div.right{
     float: right;
 }
+
+#contact{
+    cursor: pointer;
+}
