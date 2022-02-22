@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,8 +11,8 @@
         <link rel="stylesheet" type="text/css" th:href="@{/styles/search-bar.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/end.css}">
         <link href='https://fonts.googleapis.com/css?family=Comforter' rel='stylesheet'>
-        <script src="js/navbar.js" type="text/javascript"></script>
-        <script src="js/topbtn.js" type="text/javascript"></script>
+        <script th:src="@{/js/navbar.js}" type="text/javascript"></script>
+        <script th:src="@{/js/topbtn.js}" type="text/javascript"></script>
         <title>LogBase</title>
     </head>
 
@@ -35,8 +35,10 @@
             </div>
             <div class="searchbar" id="search">
                 <form class="search" action="#">
-                  <input type="number" placeholder="ID...">
-                  <button type="submit"><i class="fa fa-search"></i></button>
+                    <label>
+                        <input type="number" placeholder="ID...">
+                    </label>
+                    <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </div>
@@ -71,7 +73,7 @@
         <div class="end">
             <div class="line">
                 <div class="block">
-                    <button class="card-btn" onclick="window.location.href = 'https://github.com/bribarski7/';">
+                    <button class="card-btn" onclick="window.location.href = 'https://github.com/bribarski7/Diplomna';">
                         <div class="flip">
                             <div class="flip-inner">
                                 <div class="flip-front">

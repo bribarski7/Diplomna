@@ -13,9 +13,9 @@ public class GearLog {
     @Id
     @GeneratedValue
     public Long id;
-    private final int inRpm;
-    private final int outRpm;
-    private final int gear;
+    private int inRpm;
+    private int outRpm;
+    private int gear;
     private final Timestamp time;
 
     public GearLog() {
@@ -51,8 +51,21 @@ public class GearLog {
     public Timestamp getTime() {
         return this.time;
     }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setInRpm(int inRpm) {
+        this.inRpm = inRpm;
+    }
+
+    public void setOutRpm(int outRpm) {
+        this.outRpm = outRpm;
+    }
+
+    public void setGear(int gear) {
+        this.gear = gear;
     }
 
     @Override
@@ -63,11 +76,10 @@ public class GearLog {
     @Override
     public boolean equals(Object obj) {
         if(this == obj)return true;
-        else if(!(obj instanceof GearLog)){
+        else if(!(obj instanceof GearLog gearLog)){
             return false;
         }
         else {
-            GearLog gearLog = (GearLog) obj;
             return Objects.equals(this.getId(), gearLog.getId()) &&
                    Objects.equals(this.getInRpm(), gearLog.getInRpm()) &&
                    Objects.equals(this.getOutRpm(), gearLog.getOutRpm()) &&
