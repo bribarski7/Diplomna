@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/navigation.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/table.css}">
+</head>
+<body>
+<div class="nav-bar">
+    <ul>
+        <li>
+            <a href="/gear/index"><img class="home-icon" th:src="@{/images/home.png}"></a>
+        </li>
+        <li>
+            <a href="/gear/all">View all</a>
+        </li>
+        <li>
+            <a href="/gear/search">Get Log by id</a>
+        </li>
+        <li>
+            <a href="/gear/generate">Generate New Log</a>
+        </li>
+        <li>
+            <a href="/gear/replace">Replace Log</a>
+        </li>
+        <li>
+            <a href="/gear/delete">Delete Log</a>
+        </li>
+        <li>
+            <a href="/gear/delete">Delete Database</a>
+        </li>
+    </ul>
+</div>
+<div class="nav-title">
+    <p th:text="${title}"></p>
+</div>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>InRpm</th>
+        <th>OutRpm</th>
+        <th>Gear</th>
+    </tr>
+    <tr>
+        <td th:text="${gear.getId()}"></td>
+        <td th:text="${gear.getInRpm()}"></td>
+        <td th:text="${gear.getOutRpm()}"></td>
+        <td th:if="${gear.getGear() < 0}">R</td>
+        <td th:unless="${gear.getGear() < 0}" th:text="${gear.getGear()}"></td>
+    </tr>
+</table>
+</body>
+</html>

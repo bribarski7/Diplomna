@@ -1,0 +1,25 @@
+table, th, td{
+    font-size: 20px;
+    color: black;
+    border:2px groove #202020;
+    border-collapse: collapse;
+}
+table{
+    margin: auto;
+    width: 80%;
+}
+th{
+    background-color: #005fb5;
+    color: white;
+    width: 25%;
+}
+tr:nth-child(odd) {
+    background: #ffffff;
+}
+tr:nth-child(even) {
+    background: #d0d0d0;
+}
+.result tr:hover{
+    background-color: #606060;
+    text-decoration-color: white;
+}

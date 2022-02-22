@@ -1,0 +1,72 @@
+.par{
+    display: flex;
+    justify-content: space-between;
+}
+
+.parl{
+    margin: 10px;
+    margin-left: 40px;
+    width: 50%;
+    font-family: 'Comforter';
+}
+
+.par-head{
+    font-size: 100px;
+}
+
+.par-text{
+    font-size: 50px;
+}
+
+.parr{
+    margin: 10%;
+    width: 50%;
+    text-align: left;
+    font-family: 'Comforter';
+}
+.flip-card {
+    background-color: transparent;
+    width: 410px;
+    margin: 10px;
+    margin-right: 40px;
+    height: 418.6px;
+    border: 5px solid #333;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  .flip-card-front img{
+      max-width: 400px;
+  }
+  
+  .flip-card-back {
+    background-color: #555;
+    color: white;
+    text-align: center;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back p{
+      position: relative;
+      font-size: 30px;
+      top: 50%;
+  }

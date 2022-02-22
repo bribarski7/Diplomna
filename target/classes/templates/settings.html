@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/navigationTest.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/form.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap">
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-title-home">
+            <a class="home" href="/gear/index"><img class="home-icon" th:src="@{/images/home.png}"></a>
+        </div>
+        <div class="nav-title">
+            <a href="/gear/all">View all</a>
+        </div>
+        <div class="nav-title">
+            <a href="/gear/settings">Settings</a>
+        </div>
+    </div>
+    <form class="example" action="/gear/get" method="post">
+        <input type="number" id="idSearch" placeholder="Search..." name="id" min="1">
+        <button class="search" type="submit"><img class="search-icon" th:src="@{/images/search-icon.png}"/></button>
+    </form>
+</body>
+</html>

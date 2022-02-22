@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/navigation.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/form.css}">
+    </head>
+    <body>
+        <div class="nav-bar">
+            <ul>
+                <li>
+                    <a href="/gear/index"><img class="home-icon" th:src="@{/images/home.png}"></a>
+                </li>
+                <li>
+                    <a href="/gear/all">View all</a>
+                </li>
+                <li>
+                    <a href="/gear/search">Get Log by id</a>
+                </li>
+                <li>
+                    <a href="/gear/generate">Generate New Log</a>
+                </li>
+                <li>
+                    <a href="/gear/replace">Replace Log</a>
+                </li>
+                <li>
+                    <a href="/gear/delete">Delete Log</a>
+                </li>
+                <li>
+                    <a href="/gear/delete">Delete Database</a>
+                </li>
+            </ul>
+        </div>
+        <div class="body-title">
+            <div class="nav-title">
+                <p th:text="${title}"></p>
+            </div>
+        </div>
+        </form>
+        <form class="gen" action="/gear/post" method="post">
+            <tr>
+            <td class="ex-input"><input type="number" id="inCreate" placeholder="InRpm" name="id" min="0" max="99999"></td>
+            <td class="ex-input"><input type="number" id="outCreate" placeholder="OutRpm" name="id" min="0" max="99999"></td>
+            <td class="ex-input"><input type="number" id="gearCreate" placeholder="Gear" name="id" min="-1" max="9"></td>
+            <td class="ex-input"><button class="search" type="submit" value="Submit"><img th:src="@{/images/search-icon.png}"/></button></td>
+            </tr>
+
+        </form>
+    </body>
+</html>
