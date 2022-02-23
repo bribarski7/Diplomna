@@ -5,6 +5,7 @@
         <title>All GearLogs</title>
         <link rel="stylesheet" type="text/css" th:href="@{/styles/navigationTest.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/styles/table1.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/styles/table1.css}">
     </head>
     <body>
     <div class="nav">
@@ -31,7 +32,7 @@
                 <td th:text="${gear.getInRpm()}"><br></td>
                 <td th:text="${gear.getOutRpm()}"><br>
                 <td th:if="${gear.getGear() < 0}">R<br></td>
-                <td th:unless="${gear.getGear() < 0}" th:text="${gear.getGear()}"><br></td>
+                <td th:unless="${gear.getGear() < 0}" th:text="${gear.getGear()}"><br>  </td>
             </tr>
         </table>
     </body>

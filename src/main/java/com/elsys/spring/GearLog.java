@@ -22,7 +22,7 @@ public class GearLog {
         this.inRpm = 0;
         this.outRpm = 0;
         this.gear = 0;
-        this.time = null;
+        this.time = Timestamp.from(Instant.now());
     }
 
     public GearLog(int inRpm, int outRpm, int gear) {
@@ -48,8 +48,11 @@ public class GearLog {
         return gear;
     }
 
-    public Timestamp getTime() {
-        return this.time;
+    public String getTime() {
+        if(this.time == null){
+            return "2000-01-01 00:00:00";
+        }
+        return this.time.toString().substring(0, 19);
     }
 
     public void setId(Long id) {
