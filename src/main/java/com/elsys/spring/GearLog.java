@@ -13,9 +13,9 @@ public class GearLog {
     @Id
     @GeneratedValue
     public Long id;
-    private int inRpm;
-    private int outRpm;
-    private int gear;
+    private final int inRpm;
+    private final int outRpm;
+    private final int gear;
     private final Timestamp time;
 
     public GearLog() {
@@ -44,8 +44,8 @@ public class GearLog {
         return outRpm;
     }
 
-    public int getGear() {
-        return gear;
+    public char getGear() {
+        return (this.gear <= -1) ? 'R' : (char)('0' + this.gear);
     }
 
     public String getTime() {
@@ -53,22 +53,6 @@ public class GearLog {
             return "2000-01-01 00:00:00";
         }
         return this.time.toString().substring(0, 19);
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setInRpm(int inRpm) {
-        this.inRpm = inRpm;
-    }
-
-    public void setOutRpm(int outRpm) {
-        this.outRpm = outRpm;
-    }
-
-    public void setGear(int gear) {
-        this.gear = gear;
     }
 
     @Override
@@ -93,6 +77,6 @@ public class GearLog {
 
     @Override
     public String toString() {
-        return String.format("GearLog: id=%d inRpm=%d outRpm=%d gear=%c time=%s", this.getId(), this.getInRpm(), this.getOutRpm(), (this.getGear() == -1) ? 'R' : (char)('0' + this.getGear()), this.getTime());
+        return String.format("GearLog: id=%d inRpm=%d outRpm=%d gear=%c time=%s", this.getId(), this.getInRpm(), this.getOutRpm(), this.getGear(), this.getTime());
     }
 }

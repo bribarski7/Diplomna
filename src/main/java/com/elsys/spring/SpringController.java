@@ -21,8 +21,16 @@ class SpringController {
         this.gearRepository = gearRepository;
     }
 
+    private void logMessage(String message){
+        String line = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+        log.info(line);
+        log.info(message);
+        log.info(line);
+    }
+
     @GetMapping("/gear/index")
-    public String home(Model model){
+    public String home(){
+        logMessage("Visitor visited home page");
         return "home";
     }
 
@@ -30,19 +38,19 @@ class SpringController {
     public String index(Model model){
         List<GearLog> gears = gearRepository.findAll();
         model.addAttribute("gears", gears);
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        log.info("Got all GearLogs");
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        logMessage("Visitor saw database");
         return "full";
     }
 
     @PostMapping("/gear/get")
     public String get(@RequestBody String id, Model model){
+        if(!id.matches("^id=[1-9][0-9]*?$")){
+            model.addAttribute("message", "error input");
+            logMessage("Error searched parameter");
+            return "full";
+        }
         Long ids = Long.parseLong(id.substring(3));
-        int idi = Integer.parseInt(id.substring(3));
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        log.info("Got GearLog #" + ids);
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        logMessage("Visitor searched for GearLog #" + ids);
         GearLog gearLog;
         List<GearLog> gears = new ArrayList<>();
         try{
@@ -50,22 +58,29 @@ class SpringController {
             gears.add(gearLog);
             model.addAttribute("gear", gearLog);
             model.addAttribute("gears", gears);
-        }catch (GearLogNotFoundException e){
+        } catch (GearLogNotFoundException e){
             model.addAttribute("gear", "Not found");
+            model.addAttribute("message", "Not found #" + ids);
         }
         return "full";
     }
     @PostMapping("/gear/esp")
-    public String esp(@RequestBody Map<String, String> gear, Model model){
-        int i = Integer.parseInt(gear.get("inRpm"));
-        int o = Integer.parseInt(gear.get("outRpm"));
-        int g = Integer.parseInt(gear.get("gear"));
-        GearLog gearLog = new GearLog(i, o, g);
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        log.info("add GearLog #" + gearRepository.findAll().size()+1);
-        log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        gearRepository.save(gearLog);
-        model.addAttribute("gears", gearRepository.findAll());
-        return "full";
+    public String esp(@RequestBody Map<String, String> data, Model model){
+        GearLog gearLog;
+        try{
+            int i = Integer.parseInt(data.get("inRpm"));
+            int o = Integer.parseInt(data.get("outRpm"));
+            int g = Integer.parseInt(data.get("gear"));
+            if(g < -1 || i < 0 || o < 0){
+                throw new GearLogInvalidArgumentException();
+            }
+            gearLog = new GearLog(i, o, g);
+            logMessage("Esp module added GearLog #" + (gearRepository.findAll().size()+1));
+            gearRepository.save(gearLog);
+            model.addAttribute("gears", gearRepository.findAll());
+        } catch (Exception e){
+            logMessage(e.getMessage());
+        }
+        return "espResponse";
     }
 }
