@@ -23,10 +23,7 @@ class SpringController {
     }
 
     private void logMessage(String message){
-        String line = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-        log.info(line);
         log.info(message);
-        log.info(line);
     }
 
     @GetMapping("/gear/index")
@@ -65,6 +62,7 @@ class SpringController {
         }
         return "full";
     }
+
     @PostMapping("/gear/esp")
     public String esp(@RequestBody Map<String, String> data, Model model){
         GearLog gearLog;

@@ -28,7 +28,7 @@ public class GearLog {
         this.outRpm = 0;
         this.gear = 0;
         this.time = Timestamp.from(Instant.now());
-        log.info("New Log1");
+        log.info("New " + this.toString());
     }
 
     public GearLog(int inRpm, int outRpm, int gear) {
@@ -36,7 +36,7 @@ public class GearLog {
         this.outRpm = outRpm;
         this.gear = gear;
         this.time = Timestamp.from(Instant.now());
-        log.info("New Log2");
+        log.info("New " + this.toString());
     }
 
     public Long getId() {
