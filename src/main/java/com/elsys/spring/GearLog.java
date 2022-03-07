@@ -1,5 +1,8 @@
 package com.elsys.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Objects;
@@ -18,11 +21,14 @@ public class GearLog {
     private final int gear;
     private final Timestamp time;
 
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+
     public GearLog() {
         this.inRpm = 0;
         this.outRpm = 0;
         this.gear = 0;
         this.time = Timestamp.from(Instant.now());
+        log.info("New Log1");
     }
 
     public GearLog(int inRpm, int outRpm, int gear) {
@@ -30,6 +36,7 @@ public class GearLog {
         this.outRpm = outRpm;
         this.gear = gear;
         this.time = Timestamp.from(Instant.now());
+        log.info("New Log2");
     }
 
     public Long getId() {
