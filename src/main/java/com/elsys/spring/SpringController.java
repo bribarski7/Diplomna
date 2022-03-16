@@ -70,10 +70,11 @@ class SpringController {
             int i = Integer.parseInt(data.get("inRpm"));
             int o = Integer.parseInt(data.get("outRpm"));
             int g = Integer.parseInt(data.get("gear"));
-            if(g < -1 || i < 0 || o < 0){
+            float t = Float.parseFloat(data.get("temperature"));
+            if(g < -1 || i < 0 || o < 0 || t < -40){
                 throw new GearLogInvalidArgumentException();
             }
-            gearLog = new GearLog(i, o, g);
+            gearLog = new GearLog(i, o, g, t);
             logMessage("Esp module added GearLog #" + (gearRepository.findAll().size()+1));
             gearRepository.save(gearLog);
             model.addAttribute("gears", gearRepository.findAll());

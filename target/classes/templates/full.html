@@ -62,6 +62,7 @@
                     <th>OutRpm</th>
                     <th>Gear</th>
                     <th>Time</th>
+                    <th>Temperature</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -98,6 +99,11 @@
                     <td>
                         <div class="user-info__basic">
                             <h5 class="mb-0" th:text="${gear.getTime()}"></h5>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="user-info__basic">
+                            <h5 class="mb-0" th:text="${gear.getTemperature()}"></h5>
                         </div>
                     </td>
                 </tr>
