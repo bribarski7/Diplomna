@@ -19,7 +19,7 @@ class SpringController {
 
     public SpringController(GearRepository gearRepository) {
         this.gearRepository = gearRepository;
-        log.info("Loading Controller");
+        logMessage("Loading Controller");
     }
 
     private void logMessage(String message){

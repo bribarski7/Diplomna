@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name "esp")(type "KiCad")(uri "${KIPRJMOD}/library")(options "")(descr ""))
+  (lib (name "esp2")(type "KiCad")(uri "/home/ribarski/Elsys/ESP32-DEVKITC")(options "")(descr ""))
+)
